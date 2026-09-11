@@ -212,4 +212,5 @@ $$\text{EffectiveVelocity} = (1 + 0.7 \times \text{LaborVariance}) \times (\text
  #   h e l l o - w e b  
  #   h e l l o - w e b  
  #   h e l l o - w e b  
+ #   h e l l o - w e b  
  
