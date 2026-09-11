@@ -200,4 +200,5 @@ $$\text{EffectiveVelocity} = (1 + 0.7 \times \text{LaborVariance}) \times (\text
  #   s h i j o - b u i t  
  #   s h i j o - b u i t  
  #   s h i j o - b u i t  
+ #   s h i j o - b u i t  
  
