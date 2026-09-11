@@ -1,0 +1,515 @@
+{
+  "projects": {
+    "proj-skyline-48": {
+      "id": "proj-skyline-48",
+      "name": "Skyline Tower Phase 2",
+      "code": "SKY-T2-2026",
+      "type": "Commercial High-Rise",
+      "location": "Metropolis Financial District, Lot 4B",
+      "contractor": "Apex Structural Builders Corp.",
+      "manager": "Elena Rostova, PMP",
+      "startDate": "2025-03-01",
+      "targetCompletionDate": "2026-11-30",
+      "originalBaselineDate": "2026-10-15",
+      "totalBudget": 142500000,
+      "spentBudget": 86200000,
+      "plannedProgress": 64.0,
+      "actualProgress": 63.9,
+      "weatherImpactDays": 5,
+      "workerCount": 184,
+      "equipmentCount": 24,
+      "safetyIncidentFreeDays": 218,
+      "phases": [
+        {
+          "id": "phase-1",
+          "name": "Substructure & Deep Piles",
+          "weight": 15,
+          "plannedStart": "2025-03-01",
+          "plannedEnd": "2025-06-30",
+          "actualStart": "2025-03-01",
+          "actualEnd": "2025-07-10",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "completed",
+          "contractor": "Titan Geotech Group",
+          "criticalPath": true,
+          "delayDays": 10
+        },
+        {
+          "id": "phase-2",
+          "name": "Core Concrete & Foundation Raft",
+          "weight": 20,
+          "plannedStart": "2025-07-01",
+          "plannedEnd": "2025-10-31",
+          "actualStart": "2025-07-11",
+          "actualEnd": "2025-11-15",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "completed",
+          "contractor": "Apex Structural",
+          "criticalPath": true,
+          "delayDays": 15
+        },
+        {
+          "id": "phase-3",
+          "name": "Superstructure Steel Framing (L1\u2013L32)",
+          "weight": 25,
+          "plannedStart": "2025-11-01",
+          "plannedEnd": "2026-04-15",
+          "actualStart": "2025-11-16",
+          "actualEnd": null,
+          "plannedProgress": 88,
+          "actualProgress": 82.0,
+          "status": "in_progress",
+          "contractor": "Metropolis Ironworks",
+          "criticalPath": true,
+          "delayDays": 18
+        },
+        {
+          "id": "phase-4",
+          "name": "Curtain Wall & Facade Glazing",
+          "weight": 15,
+          "plannedStart": "2026-02-15",
+          "plannedEnd": "2026-07-30",
+          "actualStart": "2026-03-01",
+          "actualEnd": null,
+          "plannedProgress": 42,
+          "actualProgress": 34,
+          "status": "in_progress",
+          "contractor": "AeroGlass Enclosures",
+          "criticalPath": false,
+          "delayDays": 12
+        },
+        {
+          "id": "phase-5",
+          "name": "MEP Rough-Ins (Mechanical, Electrical, Fire)",
+          "weight": 15,
+          "plannedStart": "2026-03-15",
+          "plannedEnd": "2026-09-15",
+          "actualStart": "2026-04-01",
+          "actualEnd": null,
+          "plannedProgress": 32,
+          "actualProgress": 22,
+          "status": "in_progress",
+          "contractor": "Vanguard MEP Solutions",
+          "criticalPath": true,
+          "delayDays": 14
+        },
+        {
+          "id": "phase-6",
+          "name": "Interior Fitouts & Elevator Shafts",
+          "weight": 7,
+          "plannedStart": "2026-06-01",
+          "plannedEnd": "2026-10-31",
+          "actualStart": null,
+          "actualEnd": null,
+          "plannedProgress": 0,
+          "actualProgress": 0,
+          "status": "pending",
+          "contractor": "Luxe Finishes Ltd.",
+          "criticalPath": false,
+          "delayDays": 0
+        },
+        {
+          "id": "phase-7",
+          "name": "Testing, Commissioning & Occupancy Certificate",
+          "weight": 3,
+          "plannedStart": "2026-10-01",
+          "plannedEnd": "2026-11-30",
+          "actualStart": null,
+          "actualEnd": null,
+          "plannedProgress": 0,
+          "actualProgress": 0,
+          "status": "pending",
+          "contractor": "Metropolis City Inspections",
+          "criticalPath": true,
+          "delayDays": 0
+        }
+      ],
+      "supplyChain": [
+        {
+          "item": "High-Tensile Grade 60 Rebar",
+          "supplier": "ArcelorSteel",
+          "status": "delayed",
+          "delayDays": 12,
+          "severity": "high"
+        },
+        {
+          "item": "Low-E Double Glazed Curtain Panels",
+          "supplier": "AeroGlass",
+          "status": "on_track",
+          "delayDays": 0,
+          "severity": "low"
+        },
+        {
+          "item": "Variable Refrigerant Flow (VRF) Chillers",
+          "supplier": "Carrier Industrial",
+          "status": "risk",
+          "delayDays": 8,
+          "severity": "medium"
+        }
+      ],
+      "weatherForecast": {
+        "upcomingRiskDays": 4,
+        "conditions": "High wind warnings (>45 mph) impacting crane operations on levels 24+",
+        "season": "Spring Storm Transition"
+      },
+      "historyProgress": [
+        {
+          "month": "Mar '25",
+          "planned": 4.0,
+          "actual": 4.0
+        },
+        {
+          "month": "May '25",
+          "planned": 12.5,
+          "actual": 11.2
+        },
+        {
+          "month": "Jul '25",
+          "planned": 23.0,
+          "actual": 20.5
+        },
+        {
+          "month": "Sep '25",
+          "planned": 36.0,
+          "actual": 33.0
+        },
+        {
+          "month": "Nov '25",
+          "planned": 47.0,
+          "actual": 43.5
+        },
+        {
+          "month": "Jan '26",
+          "planned": 55.0,
+          "actual": 50.0
+        },
+        {
+          "month": "Mar '26",
+          "planned": 64.0,
+          "actual": 58.2
+        }
+      ]
+    },
+    "proj-harbor-bridge": {
+      "id": "proj-harbor-bridge",
+      "name": "Harbor View Suspension Bridge",
+      "code": "HVB-2024-X",
+      "type": "Civil Infrastructure",
+      "location": "Coastal Bay Corridor, Pier 12 to North Pier",
+      "contractor": "Pacific Marine Infrastructure",
+      "manager": "Marcus Sterling, PE",
+      "startDate": "2024-06-01",
+      "targetCompletionDate": "2027-04-30",
+      "originalBaselineDate": "2027-04-30",
+      "totalBudget": 320000000,
+      "spentBudget": 128500000,
+      "plannedProgress": 42.0,
+      "actualProgress": 41.3,
+      "weatherImpactDays": 8,
+      "workerCount": 260,
+      "equipmentCount": 42,
+      "safetyIncidentFreeDays": 412,
+      "phases": [
+        {
+          "id": "h-phase-1",
+          "name": "Deep Water Caissons & Pier 1 Foundation",
+          "weight": 25,
+          "plannedStart": "2024-06-01",
+          "plannedEnd": "2025-02-28",
+          "actualStart": "2024-06-01",
+          "actualEnd": "2025-03-05",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "completed",
+          "contractor": "DeepOcean Civil",
+          "criticalPath": true,
+          "delayDays": 5
+        },
+        {
+          "id": "h-phase-2",
+          "name": "Main Suspension Towers (North & South)",
+          "weight": 30,
+          "plannedStart": "2025-03-01",
+          "plannedEnd": "2026-05-30",
+          "actualStart": "2025-03-10",
+          "actualEnd": null,
+          "plannedProgress": 78,
+          "actualProgress": 76,
+          "status": "in_progress",
+          "contractor": "Pacific Marine",
+          "criticalPath": true,
+          "delayDays": 4
+        },
+        {
+          "id": "h-phase-3",
+          "name": "Main Cable Spinning & Anchorage Tying",
+          "weight": 25,
+          "plannedStart": "2026-06-01",
+          "plannedEnd": "2026-11-30",
+          "actualStart": null,
+          "actualEnd": null,
+          "plannedProgress": 0,
+          "actualProgress": 0,
+          "status": "pending",
+          "contractor": "WireTech Global",
+          "criticalPath": true,
+          "delayDays": 0
+        },
+        {
+          "id": "h-phase-4",
+          "name": "Deck Truss Assembly & Roadway Surfacing",
+          "weight": 20,
+          "plannedStart": "2026-12-01",
+          "plannedEnd": "2027-04-30",
+          "actualStart": null,
+          "actualEnd": null,
+          "plannedProgress": 0,
+          "actualProgress": 0,
+          "status": "pending",
+          "contractor": "Pacific Marine",
+          "criticalPath": true,
+          "delayDays": 0
+        }
+      ],
+      "supplyChain": [
+        {
+          "item": "Galvanized Cable Wire Coils",
+          "supplier": "Nippon Steel Corp",
+          "status": "on_track",
+          "delayDays": 0,
+          "severity": "low"
+        },
+        {
+          "item": "Orthotropic Steel Deck Sections",
+          "supplier": "Hyundai Heavy",
+          "status": "on_track",
+          "delayDays": 0,
+          "severity": "low"
+        }
+      ],
+      "weatherForecast": {
+        "upcomingRiskDays": 2,
+        "conditions": "Mild marine fog, normal tide levels within operational envelope",
+        "season": "Coastal Spring"
+      },
+      "historyProgress": [
+        {
+          "month": "Jun '24",
+          "planned": 5.0,
+          "actual": 4.8
+        },
+        {
+          "month": "Oct '24",
+          "planned": 14.0,
+          "actual": 13.5
+        },
+        {
+          "month": "Feb '25",
+          "planned": 24.5,
+          "actual": 24.0
+        },
+        {
+          "month": "Jun '25",
+          "planned": 32.0,
+          "actual": 31.2
+        },
+        {
+          "month": "Oct '25",
+          "planned": 38.0,
+          "actual": 37.5
+        },
+        {
+          "month": "Mar '26",
+          "planned": 42.0,
+          "actual": 41.3
+        }
+      ]
+    },
+    "proj-apex-datacenter": {
+      "id": "proj-apex-datacenter",
+      "name": "Apex Cloud Data Center Hyperscale",
+      "code": "APX-DC-HYP4",
+      "type": "Mission-Critical Tech Facility",
+      "location": "Northwest Industrial Technology Corridor",
+      "contractor": "HyperScale Engineering Group",
+      "manager": "Samantha Wu, Lead Superintendent",
+      "startDate": "2025-06-01",
+      "targetCompletionDate": "2026-08-31",
+      "originalBaselineDate": "2026-06-15",
+      "totalBudget": 88000000,
+      "spentBudget": 69400000,
+      "plannedProgress": 82.0,
+      "actualProgress": 70.8,
+      "weatherImpactDays": 2,
+      "workerCount": 112,
+      "equipmentCount": 16,
+      "safetyIncidentFreeDays": 284,
+      "phases": [
+        {
+          "id": "dc-phase-1",
+          "name": "Civil Earthworks & Security Perimeter",
+          "weight": 15,
+          "plannedStart": "2025-06-01",
+          "plannedEnd": "2025-08-31",
+          "actualStart": "2025-06-01",
+          "actualEnd": "2025-09-05",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "completed",
+          "contractor": "Precision Grading",
+          "criticalPath": false,
+          "delayDays": 5
+        },
+        {
+          "id": "dc-phase-2",
+          "name": "Precast Concrete Enclosure & Storm Shell",
+          "weight": 25,
+          "plannedStart": "2025-09-01",
+          "plannedEnd": "2025-12-15",
+          "actualStart": "2025-09-06",
+          "actualEnd": "2025-12-28",
+          "plannedProgress": 100,
+          "actualProgress": 100,
+          "status": "completed",
+          "contractor": "Precast Dynamics",
+          "criticalPath": true,
+          "delayDays": 13
+        },
+        {
+          "id": "dc-phase-3",
+          "name": "MV Substation & Medium Voltage Switchgear",
+          "weight": 25,
+          "plannedStart": "2025-12-15",
+          "plannedEnd": "2026-03-31",
+          "actualStart": "2026-01-05",
+          "actualEnd": null,
+          "plannedProgress": 95,
+          "actualProgress": 78,
+          "status": "delayed",
+          "contractor": "ElectroPower Systems",
+          "criticalPath": true,
+          "delayDays": 28
+        },
+        {
+          "id": "dc-phase-4",
+          "name": "Liquid Cooling Distribution & CRAC Chiller Units",
+          "weight": 25,
+          "plannedStart": "2026-02-01",
+          "plannedEnd": "2026-06-15",
+          "actualStart": "2026-02-20",
+          "actualEnd": null,
+          "plannedProgress": 52,
+          "actualProgress": 32,
+          "status": "delayed",
+          "contractor": "ArcticCool Thermal",
+          "criticalPath": true,
+          "delayDays": 30
+        },
+        {
+          "id": "dc-phase-5",
+          "name": "Integrated Systems Commissioning (IST Level 5)",
+          "weight": 10,
+          "plannedStart": "2026-06-16",
+          "plannedEnd": "2026-08-31",
+          "actualStart": null,
+          "actualEnd": null,
+          "plannedProgress": 0,
+          "actualProgress": 0,
+          "status": "pending",
+          "contractor": "Commissioning Agents Inc.",
+          "criticalPath": true,
+          "delayDays": 0
+        }
+      ],
+      "supplyChain": [
+        {
+          "item": "34.5kV Vacuum Circuit Breakers",
+          "supplier": "Siemens Energy",
+          "status": "critical_delay",
+          "delayDays": 28,
+          "severity": "high"
+        },
+        {
+          "item": "Closed-Loop Cooling Towers",
+          "supplier": "EVAPCO",
+          "status": "delayed",
+          "delayDays": 22,
+          "severity": "high"
+        },
+        {
+          "item": "2.5MW Emergency Diesel Generators",
+          "supplier": "Cummins Power",
+          "status": "on_track",
+          "delayDays": 0,
+          "severity": "low"
+        }
+      ],
+      "weatherForecast": {
+        "upcomingRiskDays": 1,
+        "conditions": "Normal interior conditioning, minimal climate exposure",
+        "season": "Spring Mild"
+      },
+      "historyProgress": [
+        {
+          "month": "Jun '25",
+          "planned": 8.0,
+          "actual": 7.5
+        },
+        {
+          "month": "Aug '25",
+          "planned": 22.0,
+          "actual": 20.0
+        },
+        {
+          "month": "Oct '25",
+          "planned": 40.0,
+          "actual": 36.5
+        },
+        {
+          "month": "Dec '25",
+          "planned": 58.0,
+          "actual": 52.0
+        },
+        {
+          "month": "Jan '26",
+          "planned": 70.0,
+          "actual": 62.0
+        },
+        {
+          "month": "Mar '26",
+          "planned": 82.0,
+          "actual": 70.8
+        }
+      ]
+    }
+  },
+  "users": {
+    "manager@buildpulse.io": {
+      "id": "user-1",
+      "email": "manager@buildpulse.io",
+      "fullName": "Elena Rostova",
+      "role": "Project Manager",
+      "passwordHash": "$2b$12$eZ/52nZ4L7xZ7K8Bq3G.Nuq7u09X4s8oFfF6O4y3n9v2z8R1x5Bfa",
+      "company": "Apex Structural Builders Corp."
+    },
+    "engineer@buildpulse.io": {
+      "id": "user-2",
+      "email": "engineer@buildpulse.io",
+      "fullName": "Marcus Sterling",
+      "role": "Site Superintendent",
+      "passwordHash": "$2b$12$eZ/52nZ4L7xZ7K8Bq3G.Nuq7u09X4s8oFfF6O4y3n9v2z8R1x5Bfa",
+      "company": "Pacific Marine Infrastructure"
+    },
+    "penisha376@gmail.com": {
+      "id": "user-f9611174",
+      "email": "penisha376@gmail.com",
+      "fullName": "penisha",
+      "role": "Project Manager",
+      "company": "peni and co",
+      "passwordHash": "$2b$12$X88Ee55/qMB1oUnUPlRyBebwTjM9cn5X.Lb7pcoz6eU4Us7qtjr8a"
+    }
+  },
+  "scenarios": {}
+}

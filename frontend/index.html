@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildPulse - Construction Project Intelligence & Delay Analytics</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="flex items-center gap-4">
+        <a href="/" class="brand">
+          <div class="brand-icon">🏗️</div>
+          <div>
+            <div>BuildPulse</div>
+            <span class="brand-tagline">Construction Intelligence</span>
+          </div>
+        </a>
+
+        <!-- Project Switcher Dropdown -->
+        <div class="project-select-wrapper">
+          <select id="project-select" class="project-select">
+            <option value="">Loading Projects...</option>
+          </select>
+          <span class="project-select-icon">▾</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Database Connectivity Status -->
+        <span id="db-status-badge" class="badge badge-subtle">Checking DB...</span>
+
+        <!-- User Profile -->
+        <div class="user-profile-badge">
+          <div class="user-avatar" id="nav-user-avatar">BP</div>
+          <div>
+            <div class="user-name" id="nav-user-name">Elena Rostova</div>
+            <span class="user-role" id="nav-user-role">Project Manager</span>
+          </div>
+        </div>
+
+        <button id="btn-logout" class="btn btn-outline btn-sm" title="Sign Out">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container" style="padding-bottom: 60px;">
+
+    <!-- Dashboard Subheader -->
+    <section class="dashboard-header">
+      <div class="project-title-group">
+        <h1 id="project-header-title">
+          <span>Loading Project Overview...</span>
+        </h1>
+        <div class="project-meta-strip" id="project-header-meta">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Top KPI Overview Metrics (4 Cards) -->
+    <section class="metrics-grid">
+      <!-- 1. Overall Progress Card -->
+      <div class="card metric-card" style="--card-accent: #f59e0b;">
+        <div class="metric-label">
+          <span>Overall Physical Progress</span>
+          <span>📊</span>
+        </div>
+        <div class="metric-value" id="metric-progress-val">
+          --% <span style="font-size: 14px; color: var(--text-muted);">/ --% Plan</span>
+        </div>
+        <div class="progress-mini-bar">
+          <div class="progress-mini-fill" id="metric-progress-bar" style="width: 0%;"></div>
+        </div>
+        <div class="metric-subtext" id="metric-progress-sub">
+          <span class="badge badge-subtle">Calculating...</span>
+        </div>
+      </div>
+
+      <!-- 2. Budget Health Card -->
+      <div class="card metric-card" style="--card-accent: #10b981;">
+        <div class="metric-label">
+          <span>Budget & Cost Performance</span>
+          <span>💵</span>
+        </div>
+        <div class="metric-value" id="metric-budget-val">
+          $--M <span style="font-size: 14px; color: var(--text-muted);">/ $--M</span>
+        </div>
+        <div class="progress-mini-bar">
+          <div class="progress-mini-fill" style="width: 60%; background: linear-gradient(90deg, #10b981, #06b6d4);"></div>
+        </div>
+        <div class="metric-subtext" id="metric-budget-sub">
+          <span class="badge badge-emerald">CPI: --</span>
+        </div>
+      </div>
+
+      <!-- 3. Schedule Health Card -->
+      <div class="card metric-card" style="--card-accent: #06b6d4;">
+        <div class="metric-label">
+          <span>Projected Handover Date</span>
+          <span>🗓️</span>
+        </div>
+        <div class="metric-value" id="metric-schedule-val" style="font-size: 24px;">
+          ----/--/--
+        </div>
+        <div class="progress-mini-bar">
+          <div class="progress-mini-fill" style="width: 72%; background: linear-gradient(90deg, #06b6d4, #3b82f6);"></div>
+        </div>
+        <div class="metric-subtext" id="metric-schedule-sub">
+          <span class="badge badge-amber">Evaluating SPI...</span>
+        </div>
+      </div>
+
+      <!-- 4. Site Resources & Safety Card -->
+      <div class="card metric-card" style="--card-accent: #8b5cf6;">
+        <div class="metric-label">
+          <span>Workforce & Safety</span>
+          <span>👷</span>
+        </div>
+        <div class="metric-value" id="metric-resources-val">
+          -- <span style="font-size: 14px; color: var(--text-muted);">Workers</span>
+        </div>
+        <div class="progress-mini-bar">
+          <div class="progress-mini-fill" style="width: 85%; background: linear-gradient(90deg, #8b5cf6, #ec4899);"></div>
+        </div>
+        <div class="metric-subtext" id="metric-resources-sub">
+          <span class="badge badge-cyan">Equipment Active</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Grid: Progress & What-If (Left) vs. Delay Risk Intelligence (Right) -->
+    <div class="dashboard-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="flex" style="flex-direction: column; gap: 24px;">
+
+        <!-- Planned vs Actual Progress (S-Curve & Phases) -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <span>📈 Planned vs. Actual Progress S-Curve</span>
+            </h2>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <span class="legend-dot" style="background: #f59e0b;"></span>
+                <span>Planned Baseline</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot" style="background: #10b981;"></span>
+                <span>Actual Cumulative</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- S-Curve SVG Chart Container -->
+          <div class="s-curve-container" id="s-curve-chart">
+            <!-- Rendered by dashboard.js -->
+          </div>
+
+          <!-- Phase & Milestone Breakdown -->
+          <div style="margin-top: 24px;">
+            <div class="flex items-center justify-between" style="margin-bottom: 12px;">
+              <h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary);">
+                Active Construction Phases & Milestones
+              </h3>
+              <span style="font-size: 12px; color: var(--text-muted);">Click "Update %" to record site progress</span>
+            </div>
+
+            <div class="phase-list" id="phases-list-container">
+              <!-- Rendered by dashboard.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive What-If Scenario Simulator -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <span>🔮 Interactive "What-If" Analysis Simulator</span>
+            </h2>
+            <span class="badge badge-cyan">Dynamic Schedule Elasticity</span>
+          </div>
+
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">
+            Adjust real-world construction disruption variables to model their impact on projected completion date, cost overhead, and delay risk score in real-time.
+          </p>
+
+          <div class="what-if-grid">
+            <!-- Left: Sliders Levers -->
+            <div>
+              <!-- Lever 1: Labor Headcount -->
+              <div class="slider-container">
+                <div class="slider-header">
+                  <span class="slider-label">👷 Workforce Capacity Shift</span>
+                  <span class="slider-value" id="sim-labor-val">0%</span>
+                </div>
+                <input type="range" id="sim-labor" min="-40" max="60" step="5" value="0">
+                <div class="flex justify-between" style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                  <span>-40% (Strike/Shortage)</span>
+                  <span>Baseline</span>
+                  <span>+60% (Double Shift)</span>
+                </div>
+              </div>
+
+              <!-- Lever 2: Weather Disruption -->
+              <div class="slider-container">
+                <div class="slider-header">
+                  <span class="slider-label">⛈️ Added Severe Weather Days</span>
+                  <span class="slider-value" id="sim-weather-val">+0 Days</span>
+                </div>
+                <input type="range" id="sim-weather" min="0" max="14" step="1" value="0">
+                <div class="flex justify-between" style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                  <span>0 Days</span>
+                  <span>7 Days</span>
+                  <span>14 Days (Severe Storms)</span>
+                </div>
+              </div>
+
+              <!-- Lever 3: Supply Chain Delay -->
+              <div class="slider-container">
+                <div class="slider-header">
+                  <span class="slider-label">🚢 Critical Material Delivery Delays</span>
+                  <span class="slider-value" id="sim-materials-val">+0 Days</span>
+                </div>
+                <input type="range" id="sim-materials" min="0" max="30" step="2" value="0">
+                <div class="flex justify-between" style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                  <span>0 Days</span>
+                  <span>15 Days</span>
+                  <span>30 Days (Port Bottleneck)</span>
+                </div>
+              </div>
+
+              <!-- Lever 4: Emergency Budget Acceleration -->
+              <div class="slider-container">
+                <div class="slider-header">
+                  <span class="slider-label">💰 Acceleration Budget Injection</span>
+                  <span class="slider-value" id="sim-budget-val">$0</span>
+                </div>
+                <input type="range" id="sim-budget" min="0" max="250000" step="10000" value="0">
+                <div class="flex justify-between" style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                  <span>$0</span>
+                  <span>$125,000</span>
+                  <span>$250,000 (Expedited Freight)</span>
+                </div>
+              </div>
+
+              <!-- Lever 5: Subcontractor Productivity -->
+              <div class="slider-container">
+                <div class="slider-header">
+                  <span class="slider-label">⚙️ Subcontractor Productivity</span>
+                  <span class="slider-value" id="sim-efficiency-val">100%</span>
+                </div>
+                <input type="range" id="sim-efficiency" min="60" max="140" step="5" value="100">
+                <div class="flex justify-between" style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">
+                  <span>60% (Sluggish)</span>
+                  <span>100% Baseline</span>
+                  <span>140% (Top Tier)</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex gap-2" style="margin-top: 18px;">
+                <button type="button" class="btn btn-simulate btn-block" id="btn-run-simulation">
+                  <span>⚡ Run What-If Simulation</span>
+                </button>
+                <button type="button" class="btn btn-outline" id="btn-reset-simulation" title="Reset Levers">
+                  ↺ Reset
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-save-scenario" title="Save Contingency Plan">
+                  💾 Save
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Simulated Impact Results -->
+            <div class="sim-results-panel">
+              <div class="flex items-center justify-between">
+                <div style="font-size: 13px; font-weight: 700;">Simulated Outcome</div>
+                <span class="badge badge-emerald">Predictive Engine</span>
+              </div>
+
+              <div id="simulation-results-container">
+                <div style="text-align: center; color: var(--text-muted); padding: 30px 0;">
+                  Adjust scenario levers and click <strong>Run What-If Simulation</strong> to evaluate impacts.
+                </div>
+              </div>
+
+              <div style="font-size: 11px; color: var(--text-muted); margin-top: 10px; text-align: center;">
+                Calculated via construction Earned Value elasticity models & critical path buffer absorption.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN: DELAY RISK INTELLIGENCE -->
+      <div class="flex" style="flex-direction: column; gap: 24px;">
+
+        <!-- Delay Risk Score Card -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <span>🎯 Intelligent Delay Risk Score</span>
+            </h2>
+            <span class="badge badge-subtle">AI Multi-Factor</span>
+          </div>
+
+          <!-- Animated Semi-Circular SVG Risk Gauge -->
+          <div class="risk-gauge-wrapper" id="risk-gauge-container">
+            <!-- Rendered by risk-gauge.js -->
+          </div>
+
+          <!-- Factor Breakdown -->
+          <div style="margin-top: 14px;">
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
+              Primary Contributing Risk Drivers
+            </div>
+            <div class="factor-list" id="risk-factors-container">
+              <!-- Rendered by risk-gauge.js -->
+            </div>
+          </div>
+
+          <!-- AI Mitigation Recommendations -->
+          <div style="margin-top: 24px;">
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px;">
+              Recommended Schedule Recovery Actions
+            </div>
+            <div class="recommendations-list" id="risk-recommendations-container">
+              <!-- Rendered by risk-gauge.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Weather & Supply Chain Live Watchlist -->
+        <section class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <span>🛡️ Supply Chain & Site Hazards</span>
+            </h2>
+          </div>
+
+          <div style="font-size: 13px; line-height: 1.5; color: var(--text-secondary);">
+            <div style="margin-bottom: 14px; padding: 10px; background: rgba(10, 14, 23, 0.4); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div class="flex items-center justify-between" style="margin-bottom: 4px;">
+                <strong style="color: #fbbf24;">🌦️ Weather Alert Protocol</strong>
+                <span class="badge badge-amber">Active Advisory</span>
+              </div>
+              <p style="font-size: 12px;">High wind gusts (>45 mph) forecast over the next 48h. Crane tandem lifts on upper levels suspended during peak wind windows.</p>
+            </div>
+
+            <div style="padding: 10px; background: rgba(10, 14, 23, 0.4); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div class="flex items-center justify-between" style="margin-bottom: 4px;">
+                <strong style="color: #38bdf8;">📦 Critical Procurement Tracking</strong>
+                <span class="badge badge-cyan">EVM Integrated</span>
+              </div>
+              <p style="font-size: 12px;">Rebar mill deliveries tracking 12 days behind lead time. Pre-fabrication of MEP modular spools prioritized to absorb structural delay.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Update Phase Progress Modal -->
+  <div class="modal-overlay" id="update-modal">
+    <div class="modal-card">
+      <div class="flex items-center justify-between" style="margin-bottom: 16px;">
+        <h3 style="font-size: 18px; font-weight: 700;">Record Actual Site Progress</h3>
+        <button type="button" id="modal-close-btn" class="btn btn-outline btn-sm" style="border: none; font-size: 16px;">✕</button>
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 18px;">
+        Updating progress updates project completion percentage, recalibrates earned value indices (SPI/CPI), and updates the delay risk score.
+      </p>
+
+      <form id="modal-update-form">
+        <div class="form-group">
+          <label class="form-label">Selected Phase / Milestone</label>
+          <div id="modal-phase-name" style="font-size: 14px; font-weight: 700; color: var(--accent-amber); padding: 8px 0;">
+            Superstructure Framing
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="flex justify-between items-center" style="margin-bottom: 6px;">
+            <label class="form-label" style="margin-bottom: 0;">Actual Completion Percentage</label>
+            <div class="flex items-center gap-2">
+              <input type="number" id="modal-progress-input" min="0" max="100" step="0.5" class="form-input" style="width: 80px; padding: 4px 8px; text-align: center; font-family: var(--font-mono); font-weight: 700;">
+              <span>%</span>
+            </div>
+          </div>
+          <input type="range" id="modal-progress-slider" min="0" max="100" step="1" value="50" style="margin-top: 8px;">
+        </div>
+
+        <div class="flex justify-between gap-3" style="margin-top: 24px;">
+          <button type="button" class="btn btn-outline" id="modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Save Progress & Recalibrate</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <!-- JavaScript Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/risk-gauge.js"></script>
+  <script src="/js/what-if.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

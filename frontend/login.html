@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildPulse - Construction Project Intelligence Login</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .auth-brand-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .auth-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      border-radius: var(--radius-lg);
+      font-size: 28px;
+      box-shadow: 0 0 24px var(--accent-amber-glow);
+      margin-bottom: 12px;
+    }
+
+    .auth-brand-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .auth-brand-subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .auth-tabs {
+      display: flex;
+      background: var(--bg-surface-elevated);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      margin-bottom: 22px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-align: center;
+    }
+
+    .auth-tab.active {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .demo-access-box {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    .demo-access-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .demo-btn-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-container">
+      <div class="auth-brand-header">
+        <div class="auth-logo">🏗️</div>
+        <h1 class="auth-brand-title">BuildPulse</h1>
+        <p class="auth-brand-subtitle">Autonomous Construction Intelligence & Schedule Analytics</p>
+      </div>
+
+      <div class="card">
+        <!-- Login / Register Tabs -->
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab active" id="tab-login">Sign In</button>
+          <button type="button" class="auth-tab" id="tab-register">Create Account</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="form-login">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email Address</label>
+            <input type="email" id="login-email" class="form-input" placeholder="manager@buildpulse.io" required value="manager@buildpulse.io">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-input" placeholder="••••••••" required value="manager123">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 12px; font-size: 14px; margin-top: 10px;">
+            Sign In to Platform
+          </button>
+        </form>
+
+        <!-- Registration Form -->
+        <form id="form-register" class="hidden">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" class="form-input" placeholder="Elena Rostova" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" class="form-input" placeholder="e.rostova@buildpulse.io" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-role">Role</label>
+            <select id="reg-role" class="form-select">
+              <option value="Project Manager">Project Manager</option>
+              <option value="Site Superintendent">Site Superintendent</option>
+              <option value="General Contractor">General Contractor</option>
+              <option value="Project Executive">Project Executive</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-company">Company / Organization</label>
+            <input type="text" id="reg-company" class="form-input" placeholder="Apex Structural Builders" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <input type="password" id="reg-password" class="form-input" placeholder="At least 6 characters" minlength="6" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 12px; font-size: 14px; margin-top: 10px;">
+            Create Account & Launch
+          </button>
+        </form>
+
+        <!-- Quick 1-Click Evaluation Access -->
+        <div class="demo-access-box">
+          <div class="demo-access-title">Instant 1-Click Demo Evaluation</div>
+          <div class="demo-btn-grid">
+            <button type="button" class="btn btn-secondary btn-block" id="demo-manager-btn">
+              ⚡ Elena Rostova (Project Manager)
+            </button>
+            <button type="button" class="btn btn-secondary btn-block" id="demo-engineer-btn">
+              ⚡ Marcus Sterling (Site Superintendent)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
