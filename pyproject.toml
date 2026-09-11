@@ -1,2 +1,20 @@
+[project]
+name = "buildpulse"
+version = "0.1.0"
+description = "BuildPulse - Construction Intelligence Platform"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn>=0.28.0",
+    "pydantic>=2.6.0",
+    "pyjwt>=2.8.0",
+    "bcrypt>=4.1.0",
+    "firebase-admin>=6.4.0",
+    "python-multipart>=0.0.9",
+    "requests>=2.31.0",
+    "email-validator>=2.0.0",
+]
+
 [tool.fastapi]
 entrypoint = "main:app"
