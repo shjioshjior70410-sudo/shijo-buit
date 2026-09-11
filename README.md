@@ -91,13 +91,21 @@ pip install -r requirements.txt
 ```
 
 ### 3. Launch the Application
-Run the startup script:
+You can launch using any of the following standard commands:
+
+**Using FastAPI CLI:**
+```bash
+fastapi dev
+```
+
+**Using the startup launcher (includes local Wi-Fi / Android detection):**
 ```bash
 python run.py
 ```
-Or directly with uvicorn:
+
+**Or directly with uvicorn:**
 ```bash
-uvicorn backend.main:app --reload --port 8000
+uvicorn main:app --reload --port 8000
 ```
 
 ### 4. Open in Your Browser
@@ -201,4 +209,5 @@ $$\text{EffectiveVelocity} = (1 + 0.7 \times \text{LaborVariance}) \times (\text
  #   s h i j o - b u i t  
  #   s h i j o - b u i t  
  #   s h i j o - b u i t  
+ #   h e l l o - w e b  
  
